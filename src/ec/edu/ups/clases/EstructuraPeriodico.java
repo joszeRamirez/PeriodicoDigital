@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * EstructuraPeriodico
+ * 
+ * Clase que permite estructurar mi periodico digital
+ * 
+ * @version 1.0
+ * @since 2019
  * @author Josze
  */
 public class EstructuraPeriodico {
@@ -14,6 +19,10 @@ public class EstructuraPeriodico {
     private ArrayList<Seccion> listaSecciones=new ArrayList<Seccion>();
     private Date fecha;
 
+    /**
+     * Este método devuelve el número de portada del periódico
+     * @return int
+     */
     public int getNumPortada() {
         return numPortada;
     }
