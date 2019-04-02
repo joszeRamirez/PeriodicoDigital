@@ -18,10 +18,11 @@ public class EstructuraPeriodico {
     private String encabezado;
     private ArrayList<Seccion> listaSecciones=new ArrayList<Seccion>();
     private Date fecha;
+    private ArrayList<RedSocial> listaRedes=new ArrayList<RedSocial>();
 
     /**
      * Este método devuelve el número de portada del periódico
-     * @return int
+     * @return (int) numPortada
      */
     public int getNumPortada() {
         return numPortada;
@@ -59,6 +60,10 @@ public class EstructuraPeriodico {
         listaSecciones.add(sec);
     }
 
+    public void addRedSocial(RedSocial redso){
+        listaRedes.add(redso);
+    }
+    
     @Override
     public String toString() {
         return "EstructuraPeriodico:" + "\nnumPortada=" + numPortada + "\nnombre=" + nombre + "\nencabezado=" + encabezado + "\nfecha=" + fecha;
