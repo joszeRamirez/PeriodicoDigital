@@ -6,11 +6,11 @@
 package ec.edu.ups.prueba;
 
 import ec.edu.ups.clases.*;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+import java.util.GregorianCalendar;
+
 
 /**
  *
@@ -18,49 +18,76 @@ import java.util.Locale;
  */
 public class Prueba {
     
-    static DateFormat format=new SimpleDateFormat("M/d/yyyy", Locale.ENGLISH);
+    static SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     
     public static void main (String[] args) throws ParseException{
-        RedSocial yahoo = new RedSocial();
-        yahoo.setCodigo(1);
-        yahoo.setNombre("Juanillo");
-        yahoo.setUrl("www.yahoo.com");
-        System.out.println(yahoo);
         
-        System.out.println("");
         
         EstructuraPeriodico estructura = new EstructuraPeriodico();
         estructura.setNumPortada(1);
         estructura.setNombre("El Mercioco");
         estructura.setEncabezado("Noticias falsas");
-        Date fechaP=format.parse("9/29/1998");
-        estructura.setFecha(fechaP);
-        System.out.println(estructura);
+        String fecha1 = ("02/04/2019");
+        Date fechaE = formato.parse(fecha1);
+        estructura.setFecha(fechaE);
         
-        System.out.println("");
-                
-        Seccion seccion = new Seccion();
-        seccion.setNombre("Deportes");
-        System.out.println(seccion);
+        RedSocial yahoo = new RedSocial();
+        yahoo.setCodigo(1);
+        yahoo.setNombre("yaju");
+        yahoo.setUrl("www.yahoo.com");
+        estructura.addRedSocial(yahoo);
         
-        System.out.println("");
+        RedSocial fb = new RedSocial();
+        fb.setCodigo(2);
+        fb.setNombre("fishbook");
+        fb.setUrl("www.fishbook.com");
+        estructura.addRedSocial(fb);
         
-        Noticia noticia = new Noticia();
-        noticia.setTitulo("Victoria en las Olimpiadas de Francia");
-        noticia.setAutor("Josze");
-        noticia.setDescripcion("Ganamos >m<");
-        Date fechaN=format.parse("3/25/2019");
-        noticia.setFechaCreacion(fechaN);
-        System.out.println(noticia);
+        Seccion seccion1 = new Seccion();
+        seccion1.setNombre("Deportes");
+        estructura.addSeccion(seccion1);
         
-        System.out.println("");
+        Seccion seccion2 = new Seccion();
+        seccion2.setNombre("Farándula");
+        estructura.addSeccion(seccion2);
+        
+        Noticia noticia1 = new Noticia();
+        noticia1.setTitulo("Victoria en las Olimpiadas de Francia");
+        noticia1.setAutor("Ricardo Arjona");
+        noticia1.setDescripcion("Ecuador ganó las olimpiadas francesas"
+                + " sin piedad");
+        noticia1.setLugar("Paris");
+        String fecha4 = ("29/03/2019");
+        Date fechaCn = formato.parse(fecha4);
+        noticia1.setFechaCreacion(fechaCn);
+        seccion1.agregarNoticias(noticia1);
+        
+        Noticia noticia2 = new Noticia();
+        noticia2.setTitulo("Maluma se hizo menestron");
+        noticia2.setAutor("Juan Barrera");
+        noticia2.setDescripcion("Se le declaró a Ricky Martin");
+        noticia1.setLugar("España");
+        String fecha5 = ("26/03/2019");
+        Date fechaCn2 = formato.parse(fecha5);
+        noticia1.setFechaCreacion(fechaCn2);
+        seccion2.agregarNoticias(noticia2);
         
         Multimedia multimedia = new Multimedia();
-        multimedia.setNombre("Música PoP");
-        Date fechaCreaM=format.parse("12/12/2018");
-        multimedia.setFechaCreacion(fechaCreaM);
-        Date fechaModiM=format.parse("03/20/2019");
-        multimedia.setFechaModificacion(fechaModiM);
-        System.out.println(multimedia);
+        multimedia.setNombre("Imágen de la victoria en carrera de postas");
+        multimedia.setFormato("jpg");
+        multimedia.setDimensiones(20);
+        multimedia.setPath("IDK");
+        String fecha2 = ("01/04/2019");
+        Date fechaCm = formato.parse(fecha2);
+        multimedia.setFechaCreacion(fechaCm);
+        String fecha3 = ("04/04/2019");
+        Date fechaM = formato.parse(fecha3);
+        multimedia.setFechaModificacion(fechaM);
+        
+        noticia1.addMultimedia(multimedia);
+        
+        System.out.println(estructura);
     }
+    
 }
+
